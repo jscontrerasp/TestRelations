@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @user.name %></h1>
+<h3>Mis eventos</h3>
+<% @misEventos = @user.events.all %>
+<% if @misEventos.any? %>
+    <p>Si tiene eventos</p>
+    <% @misEventos.each do |evento| %>
+        <h5>Nombre</h5>
+        <p><%= evento.nameEvent %></p>
+        <h5>Lugar</h5>
+        <p><%= evento.place %></p>
+    <% end %>
+<% else %>
+    <p>No tiene eventos</p>
+<% end %>
+<%= link_to 'New Event', new_event_path %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
